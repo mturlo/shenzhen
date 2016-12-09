@@ -22,7 +22,7 @@ object Instr {
 
 object IntArg {
 
-  val regex: Regex = "(\\d*)".r
+  val regex: Regex = "(-{0,1}\\d*)".r
 
 }
 

@@ -5,7 +5,7 @@ object Shenzhen extends Compiler with App {
   val testProg =
     """
       |start:
-      | mov 100 acc
+      | mov -100 acc
       | add 256
       | sub 80
       | mov acc dat

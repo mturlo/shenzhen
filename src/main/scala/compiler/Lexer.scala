@@ -2,7 +2,7 @@ package compiler
 
 trait Lexer {
 
-  val tokenRegex = "[#:\\w]*"
+  val tokenRegex = "[#:+\\-\\w]*"
 
   def tokenize(input: String): Either[List[LexicalError], List[Sentence]] = {
 
