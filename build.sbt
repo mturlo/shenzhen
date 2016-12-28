@@ -26,4 +26,4 @@ lazy val compileScalastyle = taskKey[Unit]("compileScalastyle")
 
 compileScalastyle := org.scalastyle.sbt.ScalastylePlugin.scalastyle.in(Compile).toTask("").value
 
-(compile in Compile) <<= (compile in Compile) dependsOn compileScalastyle
+(compile in Compile) := ((compile in Compile) dependsOn compileScalastyle).value
