@@ -1,5 +1,7 @@
 package shenzhen.language
 
+case class Program(statements: Seq[Statement])
+
 sealed trait Statement
 
 sealed trait Instruction extends Statement {
@@ -9,6 +11,8 @@ sealed trait Instruction extends Statement {
   }
 
 }
+
+case class LabeledInstruction(label: Label, instruction: Instruction) extends Statement
 
 sealed trait Value
 
@@ -22,8 +26,6 @@ case class Add(value: Value) extends Instruction
 
 case class Sub(value: Value) extends Instruction
 
-case class Jmp(label: Label) extends Instruction
+case class Jmp(to: String) extends Instruction
 
 case class Label(value: String) extends Statement
-
-case class Comment(value: String) extends Statement
