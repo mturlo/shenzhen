@@ -1,6 +1,6 @@
 package shenzhen.compiler
 
-import shenzhen.language.Program
+import shenzhen.language.AST
 import shenzhen.lexer.Lexer
 import shenzhen.parser.Parser
 
@@ -9,7 +9,7 @@ object Compiler {
   val lexer = Lexer
   val parser = Parser
 
-  def compile(input: String): Either[CompilationError, Program] = {
+  def compile(input: String): Either[CompilationError, AST] = {
     for {
       tokens <- lexer.tokenise(input).right
       program <- parser.parse(tokens).right

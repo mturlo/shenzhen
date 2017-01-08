@@ -19,6 +19,5 @@ object Shenzhen extends App {
 
   val program = Compiler.compile(input)
   println(program)
-  println(program.right.get.statements.size)
 
 }

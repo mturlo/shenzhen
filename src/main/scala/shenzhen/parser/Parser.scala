@@ -72,7 +72,7 @@ object Parser
     phrase(rep1(statement)) ^^ Program
   }
 
-  def parse(tokens: Seq[Token]): Either[ParsingError, Program] = {
+  def parse(tokens: Seq[Token]): Either[ParsingError, AST] = {
     val reader = new TokenReader(tokens)
     program(reader) match {
       case NoSuccess(msg, next) => Left(ParsingError(msg, toLocation(next.pos)))

@@ -1,20 +1,16 @@
 package shenzhen.language
 
-case class Program(statements: Seq[Statement])
+sealed trait AST
 
-sealed trait Statement
+case class Program(statements: Seq[Statement]) extends AST
 
-sealed trait Instruction extends Statement {
+sealed trait Statement extends AST
 
-  def execute(): Unit = { // todo?
-
-  }
-
-}
+sealed trait Instruction extends Statement
 
 case class LabeledInstruction(Label: Label, instruction: Instruction) extends Statement
 
-sealed trait Value
+sealed trait Value extends AST
 
 case class Constant(value: Int) extends Value
 
