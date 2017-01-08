@@ -65,7 +65,7 @@ object Parser
   }
 
   private def statement: Parser[Statement] = {
-    (label | labeledInstruction | instruction) <~ CRLF
+    (labeledInstruction | instruction | label) <~ CRLF
   }
 
   private def program: Parser[Program] = {
