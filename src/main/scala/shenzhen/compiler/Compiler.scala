@@ -1,6 +1,8 @@
 package shenzhen.compiler
 
 import shenzhen.language.Program
+import shenzhen.lexer.Lexer
+import shenzhen.parser.Parser
 
 object Compiler {
 

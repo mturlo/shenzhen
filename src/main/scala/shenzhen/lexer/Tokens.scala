@@ -1,4 +1,4 @@
-package shenzhen.compiler
+package shenzhen.lexer
 
 sealed trait Token
 

@@ -1,6 +1,8 @@
-package shenzhen.compiler
+package shenzhen.lexer
 
 import scala.util.parsing.combinator.RegexParsers
+
+import shenzhen.compiler.{ErrorHandling, LexicalError}
 
 object Lexer
   extends RegexParsers

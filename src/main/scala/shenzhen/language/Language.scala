@@ -12,7 +12,7 @@ sealed trait Instruction extends Statement {
 
 }
 
-case class LabeledInstruction(label: Label, instruction: Instruction) extends Statement
+case class LabeledInstruction(Label: Label, instruction: Instruction) extends Statement
 
 sealed trait Value
 

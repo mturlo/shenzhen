@@ -1,11 +1,11 @@
-package shenzhen.compiler
+package shenzhen.parser
 
 import scala.util.parsing.combinator.Parsers
-import shenzhen.language.Statement
-import scala.util.parsing.input.Reader
-import scala.util.parsing.input.Position
-import scala.util.parsing.input.NoPosition
+import scala.util.parsing.input.{NoPosition, Position, Reader}
+
+import shenzhen.compiler.{ErrorHandling, ParsingError}
 import shenzhen.language._
+import shenzhen.lexer._
 
 object Parser
   extends Parsers
