@@ -1,4 +1,4 @@
-package compiler
+package shenzhen.compiler
 
 case class LexicalError(message: String)
 

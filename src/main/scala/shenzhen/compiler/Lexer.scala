@@ -1,8 +1,8 @@
-package compiler
+package shenzhen.compiler
 
 import scala.util.parsing.combinator.RegexParsers
 
-trait Lexer extends RegexParsers {
+object Lexer extends RegexParsers {
 
   private def numeric = "-{0,1}\\d+".r ^^ (str => NUMERIC(str.toInt))
   private def identifier = "[a-zA-Z][a-zA-Z0-9]*".r ^^ IDENTIFIER

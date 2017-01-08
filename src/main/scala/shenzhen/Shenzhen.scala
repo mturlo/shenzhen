@@ -1,4 +1,7 @@
+package shenzhen
+
 import compiler.Compiler
+import compiler.Lexer
 
 object Shenzhen extends Compiler with App {
 
@@ -16,7 +19,7 @@ object Shenzhen extends Compiler with App {
 
   println(testProg)
 
-  val tokens = tokenise(testProg)
+  val tokens = Lexer.tokenise(testProg)
   println(tokens)
 
 }

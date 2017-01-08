@@ -1,4 +1,4 @@
-package compiler
+package shenzhen.compiler
 
 sealed trait Token
 
