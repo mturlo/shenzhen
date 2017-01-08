@@ -21,11 +21,11 @@ object Parser
   }
 
   private def numeric: Parser[NUMERIC] = {
-    accept("numeric", { case value @ NUMERIC(name) => value })
+    accept("numeric", { case value @ NUMERIC(_) => value })
   }
 
   private def identifier: Parser[IDENTIFIER] = {
-    accept("identifier", { case id @ IDENTIFIER(name) => id })
+    accept("identifier", { case id @ IDENTIFIER(_) => id })
   }
 
   private def label: Parser[Label] = {
@@ -53,7 +53,7 @@ object Parser
   }
 
   private def jmp: Parser[Jmp] = {
-    JMP ~> identifier ^^ { case to => Jmp(to.str) }
+    JMP ~> identifier ^^ (to => Jmp(to.str))
   }
 
   private def instruction: Parser[Instruction] = {

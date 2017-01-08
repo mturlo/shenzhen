@@ -10,7 +10,9 @@ sealed trait CompilationError {
 
 case class Location(line: Int, column: Int) {
 
-  override def toString = s"$line:$column"
+  override def toString: String = {
+    s"$line:$column"
+  }
 
 }
 

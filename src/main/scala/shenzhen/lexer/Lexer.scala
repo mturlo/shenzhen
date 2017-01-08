@@ -1,14 +1,15 @@
 package shenzhen.lexer
 
 import scala.util.parsing.combinator.RegexParsers
-
 import shenzhen.compiler.{ErrorHandling, LexicalError}
+
+import scala.util.matching.Regex
 
 object Lexer
   extends RegexParsers
   with ErrorHandling {
 
-  override val whiteSpace = "[ \t\r\f]+".r
+  override val whiteSpace: Regex = "[ \t\r\f]+".r
 
   private def numeric = "-{0,1}\\d+".r ^^ (str => NUMERIC(str.toInt))
   private def identifier = "[a-zA-Z][a-zA-Z0-9]*".r ^^ IDENTIFIER
