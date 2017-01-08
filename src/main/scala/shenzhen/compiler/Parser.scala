@@ -7,7 +7,9 @@ import scala.util.parsing.input.Position
 import scala.util.parsing.input.NoPosition
 import shenzhen.language._
 
-object Parser extends Parsers {
+object Parser
+  extends Parsers
+  with ErrorHandling {
 
   override type Elem = Token
 
@@ -67,14 +69,14 @@ object Parser extends Parsers {
   }
 
   private def program: Parser[Program] = {
-    rep1(statement) ^^ Program
+    phrase(rep1(statement)) ^^ Program
   }
 
   def parse(tokens: Seq[Token]): Either[ParsingError, Program] = {
     val reader = new TokenReader(tokens)
     program(reader) match {
-      case NoSuccess(msg, next)  => Left(ParsingError(msg))
-      case Success(result, next) => Right(result)
+      case NoSuccess(msg, next) => Left(ParsingError(msg, toLocation(next.pos)))
+      case Success(result, _)   => Right(result)
     }
   }
 

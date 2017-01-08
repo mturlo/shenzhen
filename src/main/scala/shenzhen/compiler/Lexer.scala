@@ -2,7 +2,9 @@ package shenzhen.compiler
 
 import scala.util.parsing.combinator.RegexParsers
 
-object Lexer extends RegexParsers {
+object Lexer
+  extends RegexParsers
+  with ErrorHandling {
 
   override val whiteSpace = "[ \t\r\f]+".r
 
@@ -24,8 +26,8 @@ object Lexer extends RegexParsers {
 
   def tokenise(input: String): Either[LexicalError, List[Token]] = {
     parse(tokens, input) match {
-      case NoSuccess(msg, _)  => Left(LexicalError(msg))
-      case Success(tokens, _) => Right(tokens)
+      case NoSuccess(msg, next) => Left(LexicalError(msg, toLocation(next.pos)))
+      case Success(tokens, _)   => Right(tokens)
     }
   }
 
