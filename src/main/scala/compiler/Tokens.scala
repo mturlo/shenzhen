@@ -2,7 +2,7 @@ package compiler
 
 sealed trait Token
 
-case class NUMERIC(str: String) extends Token
+case class NUMERIC(value: Int) extends Token
 case class IDENTIFIER(str: String) extends Token
 
 case object COLON extends Token
