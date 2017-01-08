@@ -1,10 +1,8 @@
 package shenzhen
 
 import compiler.Compiler
-import compiler.Lexer
-import compiler.Parser
 
-object Shenzhen extends Compiler with App {
+object Shenzhen extends App {
 
   val testProg =
     """start:
@@ -17,14 +15,9 @@ object Shenzhen extends Compiler with App {
       |""".stripMargin
 
   val input = testProg
-
   println(input)
-  println(input.split("\n").size)
 
-  val tokens = Lexer.tokenise(input)
-  println(tokens)
-
-  val program = Parser.parse(tokens.right.get)
+  val program = Compiler.compile(input)
   println(program)
   println(program.right.get.statements.size)
 

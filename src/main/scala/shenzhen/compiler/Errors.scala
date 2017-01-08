@@ -1,5 +1,11 @@
 package shenzhen.compiler
 
-case class LexicalError(message: String)
+sealed trait CompilationError {
 
-case class ParsingError(message: String)
+  def message: String
+
+}
+
+case class LexicalError(message: String) extends CompilationError
+
+case class ParsingError(message: String) extends CompilationError
