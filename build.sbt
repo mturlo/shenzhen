@@ -7,16 +7,28 @@ scalaVersion := "2.11.8"
 libraryDependencies ++= {
 
   object Versions {
+    val parserCombinators = "1.0.5"
     val scalatest = "3.0.0"
   }
 
   Seq(
+
+    // prod
+    "org.scala-lang.modules" %% "scala-parser-combinators" % Versions.parserCombinators,
+
+    // test
     "org.scalatest" %% "scalatest" % Versions.scalatest % "test"
-  )
+
+  ).map(_ withSources() withJavadoc())
 
 }
 
-scalacOptions ++= Seq("-Xfatal-warnings", "-feature", "-language:postfixOps")
+scalacOptions ++= Seq(
+  "-Xfatal-warnings",
+  "-feature",
+  "-deprecation",
+  "-language:postfixOps"
+)
 
 lazy val root = project in file(".")
 

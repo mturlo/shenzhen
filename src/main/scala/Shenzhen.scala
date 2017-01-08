@@ -4,6 +4,7 @@ object Shenzhen extends Compiler with App {
 
   val testProg =
     """
+      |# some comment
       |start:
       | mov -100 acc
       | add 256
@@ -13,17 +14,9 @@ object Shenzhen extends Compiler with App {
       | jmp start #again
       |""".stripMargin
 
-  val input = args.toSeq match {
-    case Nil =>
-      testProg
-    case nonEmptyArgs =>
-      nonEmptyArgs.mkString(" ")
-  }
+  println(testProg)
 
-  val tokens = tokenize(input)
+  val tokens = tokenise(testProg)
   println(tokens)
-
-  val parsed = tokens.right.map(_ map parse)
-  println(parsed)
 
 }
