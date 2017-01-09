@@ -11,7 +11,7 @@ object Shenzhen extends App {
       | sub 80
       | mov acc dat
       | mov dat p0
-      | jmp start
+      | jmp foo
       |""".stripMargin
 
   val input = testProg

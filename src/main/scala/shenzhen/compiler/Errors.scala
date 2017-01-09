@@ -16,6 +16,14 @@ case class Location(line: Int, column: Int) {
 
 }
 
+object Location {
+
+  def zero: Location = Location(0, 0)
+
+}
+
 case class LexicalError(message: String, location: Location) extends CompilationError
 
 case class ParsingError(message: String, location: Location) extends CompilationError
+
+case class SyntaxError(message: String, location: Location = Location.zero) extends CompilationError
